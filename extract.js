@@ -11,9 +11,13 @@ define({
             req([mod], function (inc) {
                 var ret = {};
 
-                x.forEach(function (pname) {
-                    ret[pname] = inc[pname];
-                });
+                if (x.length > 1) {
+                    x.forEach(function (pname) {
+                        ret[pname] = inc[pname];
+                    });
+                } else {
+                    ret = inc[x[0]];
+                }
 
                 load(ret);
             });
