@@ -33,10 +33,10 @@ define({
 
                 try {
                     if (x.length > 1) {
-                        x.forEach(function (pname) {
-                            path = pname.split(".");
+                        while (x.length > 0) {
+                            path = x.shift().split(".");
                             ret[path[path.length - 1]] = descend(path, inc);
-                        });
+                        }
                     } else {
                         path = x[0].split(".");
                         ret = descend(path, inc);
