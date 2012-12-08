@@ -1,6 +1,6 @@
 {
     "name": "extract",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "An AMD loader plugin for extracting partial modules",
     "categories": [
         "Loader plugins"
