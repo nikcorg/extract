@@ -1,5 +1,15 @@
 (function () {
 
+function descend(path, o) {
+    var step = path.shift();
+
+    while (path.length > 0) {
+        return descend(path, o[step]);
+    }
+
+    return o[step];
+}
+
 define({
     load: function (name, req, load, config) {
         var mod, x;
@@ -12,13 +22,16 @@ define({
 
             req([mod], function (inc) {
                 var ret = {};
+                var path;
 
                 if (x.length > 1) {
                     x.forEach(function (pname) {
-                        ret[pname] = inc[pname];
+                        path = pname.split(".");
+                        ret[path[path.length - 1]] = descend(path, inc);
                     });
                 } else {
-                    ret = inc[x[0]];
+                    path = x[0].split(".");
+                    ret = descend(path, inc);
                 }
 
                 load(ret);
