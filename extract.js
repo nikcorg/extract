@@ -3,7 +3,14 @@
 function descend(path, o) {
     var step = path.shift();
 
+    if (typeof(o[step]) === "undefined") {
+        throw new Error("Broken descend path");
+    }
+
     while (path.length > 0) {
+        if (typeof(o[step]) !== "object") {
+            throw new Error("Invalid descend path");
+        }
         return descend(path, o[step]);
     }
 
@@ -24,17 +31,21 @@ define({
                 var ret = {};
                 var path;
 
-                if (x.length > 1) {
-                    x.forEach(function (pname) {
-                        path = pname.split(".");
-                        ret[path[path.length - 1]] = descend(path, inc);
-                    });
-                } else {
-                    path = x[0].split(".");
-                    ret = descend(path, inc);
-                }
+                try {
+                    if (x.length > 1) {
+                        x.forEach(function (pname) {
+                            path = pname.split(".");
+                            ret[path[path.length - 1]] = descend(path, inc);
+                        });
+                    } else {
+                        path = x[0].split(".");
+                        ret = descend(path, inc);
+                    }
 
-                load(ret);
+                    load(ret);
+                } catch (e) {
+                    load.error(e.message);
+                }
             });
         }
     }
