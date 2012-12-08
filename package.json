@@ -1,0 +1,25 @@
+{
+    "name": "extract",
+    "version": "0.1.0",
+    "description": "An AMD loader plugin for extracting partial modules",
+    "categories": [
+        "Loader plugins"
+    ],
+    "main": "extract.js",
+    "github": "https://github.com/nikcorg/extract",
+    "bugs": {
+        "web": "https://github.com/nikcorg/extract/issues"
+    },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/nikcorg/extract.git"
+        }
+    ],
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "http://www.opensource.org/licenses/mit-license.php"
+        }
+    ]
+}
