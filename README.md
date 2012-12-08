@@ -14,7 +14,7 @@ require(["extract!foo?some/module"],
 );
 ```
 
-The extraction path can include dots for extacting a sub-property.
+The extraction path can include dots for extracting a sub-property.
 
 ```javascript
 require(["extract!foo.bar?some/module"],
@@ -24,7 +24,7 @@ require(["extract!foo.bar?some/module"],
 );
 ```
 
-When extracting several properties, the result is always a flat object where the name of the extracted property is always the leaf of the path.
+When extracting several properties, the result is always a flat object where the name of the extracted property is the leaf of the path.
 
 ```javascript
 require(["extract!foo.bar,baz.quux?some/module"],
