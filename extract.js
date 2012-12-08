@@ -1,3 +1,5 @@
+(function () {
+
 define({
     load: function (name, req, load, config) {
         var mod, x;
@@ -24,3 +26,5 @@ define({
         }
     }
 });
+
+}());
